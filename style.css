@@ -1,0 +1,33 @@
+h1 {
+	font-family: 'Titillium Web', Helvetica, sans-serif;
+	text-transform: uppercase;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+body {
+	background-color: black;
+}
+
+h2 {
+	color: red;
+	font-family: Digital;
+	font-size: 36px;
+}
+
+#yellowBtn {
+	background-color: yellow;
+}
+
+#blueBtn {
+	background-color: blue;
+}
+
+#redBtn {
+	background-color: red;
+}
+
+#greenBtn {
+	background-color: green;
+}
