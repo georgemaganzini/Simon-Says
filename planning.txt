@@ -1,0 +1,20 @@
+Pseudocode for Simon Says
+
+DECLARE constant for player
+DECLARE state variables for gamePhase (player turn vs simon turn), gameOver, and sequence array
+
+ATTACH event listener to gameBoard 
+
+GENERATE a random color
+
+UPDATE sequence array with new color
+
+CHANGE gamePhase and listen for user input
+
+REFERENCE sequence array to determine if gameOver becomes true
+    If yes: end the game 
+    If user correctly completes the entire array, swap gamePhase back and repeat process with one additional color generated
+
+CREATE reset function that re-initializes the game
+
+ 
