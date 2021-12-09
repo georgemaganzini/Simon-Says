@@ -1,9 +1,8 @@
 h1 {
 	font-family: 'Titillium Web', Helvetica, sans-serif;
+	font-size: 40px;
 	text-transform: uppercase;
 	color: white;
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-		1px 1px 0 #000;
 }
 
 body {
@@ -14,28 +13,38 @@ h2 {
 	color: red;
 	font-family: Digital;
 	font-size: 36px;
+	font-weight: 600;
 }
 
-#yellowBtn {
-	background-color: yellow;
+.yellowBtn {
+	background-color: rgb(255, 255, 0);
 }
 
-#blueBtn {
-	background-color: blue;
+.blueBtn {
+	background-color: rgb(0, 0, 255);
 }
 
-#redBtn {
-	background-color: red;
+.redBtn {
+	background-color: rgb(255, 0, 0);
 }
 
-#greenBtn {
-	background-color: green;
+.greenBtn {
+	background-color: rgb(0, 255, 0);
 }
 
 .boardBtns {
 	margin: 15px;
 	height: 50px;
 	width: 50px;
+	opacity: 0.5;
+	border-radius: 20px;
+	border-style: none;
+}
+
+.boardBtns:hover,
+.highlight {
+	opacity: 1;
+	box-shadow: 0 0 40px 20px #0ff;
 }
 
 #resetBtn {
