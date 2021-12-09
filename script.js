@@ -39,7 +39,6 @@ init();
 
 // generate sequence function
 
-
 function increaseByOne(num) {
 	for (let i = 0; i < num; i++) {
 		simonSequence.push(Math.floor(Math.random() * 4));
@@ -48,20 +47,17 @@ function increaseByOne(num) {
 
 simonSequence.forEach(function (el, index) {
 	setTimeout(function () {
-		if (index > 0) {
-			let previousBtn = document.querySelector(`#b${simonSequence[index - 1]}`);
-			previousBtn.classList.remove('highlight');
-			console.log('previous button', previousBtn.id);
-		}
 		let tempBtn = document.querySelector(`#b${el}`);
 		tempBtn.classList.toggle('highlight');
-		console.log(el, index);
-	}, index * 5000);
+		console.log(el, "on");
+		setTimeout(function () {
+			tempBtn.classList.toggle('highlight');
+			console.log(el, "off")
+		}, 500);
+	}, index * 1000);
 });
 
-function onOff(){
-	
-}
+function onOff() {}
 
 function turnOnAll() {
 	yellowBtn.classList.add('highlight');
