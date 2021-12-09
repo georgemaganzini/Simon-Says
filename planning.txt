@@ -7,7 +7,7 @@ ATTACH event listener to gameBoard
 
 GENERATE a random color
 
-UPDATE sequence array with new color
+UPDATE sequence array (or object?) with new color
 
 CHANGE gamePhase and listen for user input
 
