@@ -11,7 +11,7 @@ const blueBtn = document.querySelector('.blueBtn');
 const redBtn = document.querySelector('.redBtn');
 const greenBtn = document.querySelector('.greenBtn');
 
-gameBoard.addEventListener('click', handlePlayerClick);
+gameBoard.addEventListener('click', playerTurn);
 resetBtn.addEventListener('click', init);
 
 function init() {
@@ -67,7 +67,7 @@ function turnOffAll() {
 
 // playerTurn - each click that touches a button -> push into array, each time check if array matches simon array up to that index
 
-function handlePlayerClick(event) {
+function playerTurn(event) {
 	if (event.target.id !== 'gameBoard') {
 		let clickedBtn = document.querySelector(`#${event.target.id}`);
 		clickedBtn.classList.toggle('highlight');
@@ -75,14 +75,29 @@ function handlePlayerClick(event) {
 			clickedBtn.classList.toggle('highlight');
 		}, 500);
 		userSequence.push(`${event.target.id[1]}`);
-		console.log(userSequence);
-		// while
-		if (userSequence != simonSequencei)
+		if (
+			userSequence.toString() !==
+			simonSequence.slice(0, userSequence.length).toString()
+		) {
+			console.log(userSequence, simonSequence.slice(0, userSequence.length));
+			console.log('game over');
+			gameOver = true;
+		}
+		if (
+			userSequence.toString() ===
+			simonSequence.toString()
+		) {
+			console.log(userSequence, simonSequence.slice(0, userSequence.length));
+			console.log('next round');
+			gamePhase = true;
+		}
 	}
 }
 
-function switchPhase() {
-	if (gamePhase) {
-		gamePhase = false;
-	} else gamePhase = true;
-}
+
+
+// function switchPhase() {
+// 	if (gamePhase) {
+// 		gamePhase = false;
+// 	} else gamePhase = true;
+// }
