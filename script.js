@@ -3,6 +3,7 @@ let gameOver;
 let simonSequence;
 let userSequence;
 let roundNum;
+let prevHigh = 0;
 
 const gameBoard = document.querySelector('#gameBoard');
 const resetBtn = document.querySelector('#resetBtn');
@@ -10,38 +11,43 @@ const yellowBtn = document.querySelector('.yellowBtn');
 const blueBtn = document.querySelector('.blueBtn');
 const redBtn = document.querySelector('.redBtn');
 const greenBtn = document.querySelector('.greenBtn');
+const roundCounter = document.querySelector('#round-score');
+const highCounter = document.querySelector('#high-score');
 
 gameBoard.addEventListener('click', handlePlayerTurn);
-resetBtn.addEventListener('click', init);
+
+resetBtn.addEventListener('click', function () {
+	clearTimeout(lightShowSwitch);
+	init();
+});
 
 function init() {
+	if (roundNum > prevHigh) {
+		prevHigh = roundNum;
+		highCounter.innerText = `High Score:${prevHigh}`;
+	}
 	playerTurn = false;
 	gameOver = false;
 	simonSequence = [];
 	userSequence = [];
 	roundNum = 1;
+	roundCounter.innerText = `Round:${'000' + roundNum}`;
 	turnOffAll();
 	setTimeout(() => increaseByOneAndGo(), 2000);
 }
 
 init();
 
-// generate sequence function
-
-// function increaseBy(num) {
-// 	for (let i = 0; i < num; i++) {
-// 		simonSequence.push(Math.floor(Math.random() * 4));
-// 	}
-// }
-
 function increaseByOneAndGo() {
 	simonSequence.push(Math.floor(Math.random() * 4));
 	lightShow();
 }
 
+let lightShowSwitch;
+
 function lightShow() {
 	simonSequence.forEach(function (el, index) {
-		setTimeout(function () {
+		lightShowSwitch = setTimeout(function () {
 			let tempBtn = document.querySelector(`#b${el}`);
 			tempBtn.classList.toggle('highlight');
 			setTimeout(function () {
@@ -68,8 +74,6 @@ function turnOffAll() {
 	greenBtn.classList.remove('highlight');
 }
 
-// playerTurn - each click that touches a button -> push into array, each time check if array matches simon array up to that index
-
 function handlePlayerTurn(event) {
 	if (playerTurn) {
 		if (event.target.id !== 'gameBoard') {
@@ -85,19 +89,30 @@ function handlePlayerTurn(event) {
 			) {
 				gameOver = true;
 				if (confirm('Game over, would you like to play again?')) {
-					init();
+					setTimeout(() => init(), 1000);
 				}
 			}
 			if (userSequence.toString() === simonSequence.toString()) {
 				userSequence = [];
 				playerTurn = false;
 				roundNum += 1;
+				if (roundNum < 10) {
+					roundCounter.innerText = `Round:${'000' + roundNum}`;
+				} else {
+					roundCounter.innerText = `Round:${'00' + roundNum}`;
+				}
+
 				setTimeout(() => increaseByOneAndGo(), 2000);
 			}
 		}
 	}
 }
 
-// TODO: change gameOver notification
+// TODO: change gameOver to modal
+// 		 instructions modal
 
-// roundNum dom manipulation
+// high score display
+
+// reset func, if (roundNum > highScore) {
+// scoreCounter = roundNum
+// }
