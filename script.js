@@ -22,14 +22,18 @@ resetBtn.addEventListener('click', function () {
 });
 
 function init() {
-	if (roundNum > prevHigh) {
-		prevHigh = roundNum;
-		highCounter.innerText = `High Score:${prevHigh}`;
-	}
 	playerTurn = false;
 	gameOver = false;
 	simonSequence = [];
 	userSequence = [];
+	if (roundNum > prevHigh) {
+		prevHigh = roundNum;
+		if (prevHigh < 10) {
+			highCounter.innerText = `High Score:${'000' + prevHigh}`;
+		} else highCounter.innerText = `High Score:${'00' + prevHigh}`;
+	} else if (prevHigh < 10) {
+		highCounter.innerText = `High Score:${'000' + prevHigh}`;
+	} else highCounter.innerText = `High Score:${'00' + prevHigh}`;
 	roundNum = 1;
 	roundCounter.innerText = `Round:${'000' + roundNum}`;
 	turnOffAll();
@@ -76,7 +80,7 @@ function turnOffAll() {
 
 function handlePlayerTurn(event) {
 	if (playerTurn) {
-		if (event.target.id !== 'gameBoard') {
+		if (event.target.classList.contains('boardBtns')) {
 			let clickedBtn = document.querySelector(`#${event.target.id}`);
 			clickedBtn.classList.toggle('highlight');
 			setTimeout(function () {
