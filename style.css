@@ -1,53 +1,101 @@
 h1 {
 	font-family: 'Titillium Web', Helvetica, sans-serif;
-	font-size: 40px;
+	font-size: 50px;
 	text-transform: uppercase;
 	color: white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 body {
+	background-image: url(/assets/carpet2.webp);
 	background-color: black;
 }
 
 h2 {
 	color: red;
-	font-family: Digital;
+	font-family: Digital, cursive, sans-serif;
 	font-size: 36px;
 	font-weight: 600;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#high-score{
+	color: greenyellow;
+}
+
+.scores {
+	width: 500px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#resetBtn {
+	background-color: rgb(0, 255, 0);
+	border-style:outset
+	height: 30px;
+	border-radius: 10px;
+	font-family: sans-serif;
+	
+}
+
+#gameBoard {
+	display: flex;
+	/* background-color: darkgray; */
+	/* border: 2px solid aqua;	 */
+	flex-wrap: wrap;
+	position: relative;
+	height: 500px;
+	width: 500px;
+}
+
+
+.boardBtns {
+	margin: 15px;
+	height: 400px;
+	width: 400px;
+	opacity: 0.65;
+	border-radius: 10px;
+	border-style: none;
+	margin: 10px;
+	flex: 1, 1, 0;
+	
+
 }
 
 .yellowBtn {
 	background-color: rgb(255, 255, 0);
+	clip-path: circle(50% at 100% 0);
+	position: absolute;
+	top: 280px;
+	left: -200px;
 }
 
 .blueBtn {
 	background-color: rgb(0, 0, 255);
+	clip-path: circle(50% at 0 0);
+	position: absolute;
+	top: 280px;
+	right: -200px
 }
 
 .redBtn {
 	background-color: rgb(255, 0, 0);
+	clip-path: circle(50% at 0 100%);
+	position: absolute;
+	right: -200px;
+	top: -200px;
+
 }
 
 .greenBtn {
 	background-color: rgb(0, 255, 0);
+	clip-path: circle(50% at 100% 100%);
+	position: absolute;
+	top: -200px;
+	left: -200px;   
 }
 
-.boardBtns {
-	margin: 15px;
-	height: 50px;
-	width: 50px;
-	opacity: 0.5;
-	border-radius: 20px;
-	border-style: none;
-}
 
-.boardBtns:hover,
 .highlight {
 	opacity: 1;
-	box-shadow: 0 0 40px 20px #0ff;
-}
-
-#resetBtn {
-	margin-top: 80px;
-	margin-left: 140px;
-}
+	box-shadow: 0 0 40px 15px #0ff;
