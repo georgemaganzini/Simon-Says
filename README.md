@@ -22,15 +22,8 @@ A browser-based "Simon Says" game coded in JavaScript, HTML, and CSS.
 
 - As a user, I want the game to have sound cues for the four quadrants.
 - As a user, I want to see the current round number as well as the highest round I have ever reached.
-- As a user, I want different visual themes. 
-    - Light/Dark mode
-    - Simón theme
-    - Squid Game
-    - Famous Simons 
-    - Other meme-themes
-    
+- As a user, I want different visual themes.
+
 - As a user, I want different game modes.
-    - Mirrored/Reverse recall 
-    - 2-player
-    - Only repeat what Simon actually "says"
-    
+  - Mirrored/Reverse recall
+  - Only repeat what Simon actually "says"
