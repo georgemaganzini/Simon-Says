@@ -1,5 +1,5 @@
 body {
-	background-image: url(/assets/arcade.jpeg);
+	background-image: url("~/assets/arcade.jpeg");
 	background-color: black;
 	display: flex;
 	position: relative;
