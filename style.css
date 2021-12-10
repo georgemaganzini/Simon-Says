@@ -1,26 +1,44 @@
+body {
+	background-image: url(/assets/arcade.jpeg);
+	background-color: black;
+	display: flex;
+	position: relative;
+}
+
 h1 {
 	font-family: 'Titillium Web', Helvetica, sans-serif;
 	font-size: 50px;
 	text-transform: uppercase;
 	color: white;
-	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-shadow: 3px 0 black, 0 3px black, 3px 0 black, 0 3px black;
+	position: relative;
+	z-index: 1;
+	top: 310px;
+	left: 175px;
 }
 
-body {
-	background-image: url(/assets/carpet2.webp);
-	background-color: black;
+.container {
+	margin: auto;
 }
 
 h2 {
 	color: red;
+	/* Digital-7 font courtesy of:
+	Sizenko Alexander
+	Style-7
+	http://www.styleseven.com
+	Created: October 7 2008 */
 	font-family: Digital, cursive, sans-serif;
 	font-size: 36px;
 	font-weight: 600;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	position: relative;
+	top: -40px;
 }
 
 #high-score{
 	color: greenyellow;
+	
 }
 
 .scores {
@@ -31,21 +49,25 @@ h2 {
 
 #resetBtn {
 	background-color: rgb(0, 255, 0);
-	border-style:outset
+	border: 2px solid rgba(0, 150, 0, .7);
 	height: 30px;
-	border-radius: 10px;
+	width: 30px;
+	border-radius: 50%;
 	font-family: sans-serif;
-	
+	position: relative;
+	bottom: 215px;
+	left: 238px;
 }
 
 #gameBoard {
 	display: flex;
-	/* background-color: darkgray; */
-	/* border: 2px solid aqua;	 */
+	background-color: rgb(27, 27, 27);
+	border-radius: 40%;
 	flex-wrap: wrap;
 	position: relative;
 	height: 500px;
 	width: 500px;
+	border: 3px solid rgba(0, 0, 0, .3);
 }
 
 
@@ -54,16 +76,15 @@ h2 {
 	height: 400px;
 	width: 400px;
 	opacity: 0.65;
-	border-radius: 10px;
-	border-style: none;
+	border-radius: 50px;
 	margin: 10px;
 	flex: 1, 1, 0;
-	
-
+	border-style: initial;	
 }
 
 .yellowBtn {
 	background-color: rgb(255, 255, 0);
+	border: 2px solid rgba(255, 165, 0, .7);
 	clip-path: circle(50% at 100% 0);
 	position: absolute;
 	top: 280px;
@@ -72,6 +93,7 @@ h2 {
 
 .blueBtn {
 	background-color: rgb(0, 0, 255);
+	border: 2px solid rgba(0, 0, 150, .7);
 	clip-path: circle(50% at 0 0);
 	position: absolute;
 	top: 280px;
@@ -80,6 +102,7 @@ h2 {
 
 .redBtn {
 	background-color: rgb(255, 0, 0);
+	border: 2px solid rgba(150, 0, 0, .7);
 	clip-path: circle(50% at 0 100%);
 	position: absolute;
 	right: -200px;
@@ -89,6 +112,7 @@ h2 {
 
 .greenBtn {
 	background-color: rgb(0, 255, 0);
+	border: 2px solid rgba(0, 150, 0, .7);
 	clip-path: circle(50% at 100% 100%);
 	position: absolute;
 	top: -200px;
