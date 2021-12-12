@@ -4,6 +4,13 @@ let simonSequence;
 let userSequence;
 let roundNum;
 let prevHigh = 0;
+let lightSwitch;
+let GAME = {};
+
+// const green = new Audio('assets/green.mp3');
+// const red = new Audio('assets/red.mp3');
+// const yellow = new Audio('assets/yellow.mp3');
+// const blue = new Audio('assets/blue.mp3');
 
 const gameBoard = document.querySelector('#gameBoard');
 const resetBtn = document.querySelector('#resetBtn');
@@ -17,9 +24,73 @@ const highCounter = document.querySelector('#high-score');
 gameBoard.addEventListener('click', handlePlayerTurn);
 
 resetBtn.addEventListener('click', function () {
-	clearTimeout(lightShowSwitch);
+	clearTimeout(lightSwitch);
 	init();
 });
+
+// Playing multiple audio files at once, followed this guide:
+// https://blog.cotten.io/playing-audio-resources-simultaneously-in-javascript-546ec4d6216a
+
+function Channel(audio_uri) {
+	this.audio_uri = audio_uri;
+	this.resource = new Audio(audio_uri);
+}
+
+Channel.prototype.play = function () {
+	this.resource.play();
+};
+
+function Switcher(audio_uri, num) {
+	this.channels = [];
+	this.num = num;
+	this.index = 0;
+
+	for (let i = 0; i < num; i++) {
+		this.channels.push(new Channel(audio_uri));
+	}
+}
+
+Switcher.prototype.play = function () {
+	this.channels[this.index++].play();
+	this.index = this.index < this.num ? this.index : 0;
+};
+
+GAME.Sound = (function () {
+	let self = {};
+
+	self.playGreen = function () {
+		if (GAME.isReady()) {
+			sfx_switcher_green.play();
+		}
+	};
+
+	self.playRed = function () {
+		if (GAME.isReady()) {
+			sfx_switcher_red.play();
+		}
+	};
+
+	self.playYellow = function () {
+		if (GAME.isReady()) {
+			sfx_switcher_yellow.play();
+		}
+	};
+
+	self.playBlue = function () {
+		if (GAME.isReady()) {
+			sfx_switcher_blue.play();
+		}
+	};
+
+	self.init = function () {
+		sfx_switcher_green = new Switcher('assets/green.mp3', 10);
+		sfx_switcher_red = new Switcher('assets/red.mp3', 10);
+		sfx_switcher_yellow = new Switcher('assets/yellow.mp3', 10);
+		sfx_switcher_blue = new Switcher('assets/blue.mp3', 10);
+	};
+
+	return self;
+})();
 
 function init() {
 	playerTurn = false;
@@ -36,22 +107,26 @@ function init() {
 	} else highCounter.innerText = `High Score:${'00' + prevHigh}`;
 	roundNum = 1;
 	roundCounter.innerText = `Round:${'000' + roundNum}`;
-	turnOffAll();
-	setTimeout(() => increaseByOneAndGo(), 2000);
+	turnOnAll();
+	setTimeout(() => turnOffAll(), 500);
+	setTimeout(() => turnOnAll(), 1000);
+	setTimeout(() => turnOffAll(), 1500);
+	setTimeout(() => turnOnAll(), 2000);
+	setTimeout(() => turnOffAll(), 2500);
+	setTimeout(() => increaseByOneAndGo(), 3000);
 }
 
+GAME.Sound.init();
 init();
 
 function increaseByOneAndGo() {
 	simonSequence.push(Math.floor(Math.random() * 4));
-	lightShow();
+	simonTurn();
 }
 
-let lightShowSwitch;
-
-function lightShow() {
+function simonTurn() {
 	simonSequence.forEach(function (el, index) {
-		lightShowSwitch = setTimeout(function () {
+		lightSwitch = setTimeout(function () {
 			let tempBtn = document.querySelector(`#b${el}`);
 			tempBtn.classList.toggle('highlight');
 			setTimeout(function () {
@@ -64,12 +139,12 @@ function lightShow() {
 	});
 }
 
-// function turnOnAll() {
-// 	yellowBtn.classList.add('highlight');
-// 	blueBtn.classList.add('highlight');
-// 	redBtn.classList.add('highlight');
-// 	greenBtn.classList.add('highlight');
-// }
+function turnOnAll() {
+	yellowBtn.classList.add('highlight');
+	blueBtn.classList.add('highlight');
+	redBtn.classList.add('highlight');
+	greenBtn.classList.add('highlight');
+}
 
 function turnOffAll() {
 	yellowBtn.classList.remove('highlight');
@@ -80,6 +155,19 @@ function turnOffAll() {
 
 function handlePlayerTurn(event) {
 	if (playerTurn) {
+		switch (event.target.id) {
+			case 'b0':
+				sfx_switcher_green.play();
+			case 'b1':
+				sfx_switcher_red.play();
+			case 'b2':
+				sfx_switcher_yellow.play();
+			case 'b3':
+				sfx_switcher_blue.play();
+			default:
+				break;
+		}
+
 		if (event.target.classList.contains('boardBtns')) {
 			let clickedBtn = document.querySelector(`#${event.target.id}`);
 			clickedBtn.classList.toggle('highlight');
@@ -114,9 +202,3 @@ function handlePlayerTurn(event) {
 
 // TODO: change gameOver to modal
 // 		 instructions modal
-
-// high score display
-
-// reset func, if (roundNum > highScore) {
-// scoreCounter = roundNum
-// }
