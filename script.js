@@ -18,6 +18,7 @@ const highCounter = document.querySelector('#high-score');
 const openBtn = document.getElementById('openModal');
 const modal = document.getElementById('modal');
 const closeBtn = document.getElementById('close');
+const modalGameOver = document.getElementById('game-over-modal-container');
 
 // Initialization for multiple audio files at once, followed this guide:
 // https://blog.cotten.io/playing-audio-resources-simultaneously-in-javascript-546ec4d6216a
@@ -84,6 +85,12 @@ GAME.Sound = (function () {
 		}
 	};
 
+	self.playUi = function () {
+		if (GAME.isReady()) {
+			sfx_game_over.play();
+		}
+	};
+
 	self.init = function () {
 		sfx_switcher_green = new Switcher('assets/green.mp3', 10);
 		sfx_switcher_red = new Switcher('assets/red.mp3', 10);
@@ -91,6 +98,7 @@ GAME.Sound = (function () {
 		sfx_switcher_blue = new Switcher('assets/blue.mp3', 10);
 		ui_button = new Switcher('assets/ui-button.wav', 5);
 		bloop = new Switcher('assets/bloop.mp3', 5);
+		sfx_game_over = new Switcher('assets/game-over.wav', 5);
 	};
 
 	return self;
@@ -103,12 +111,20 @@ const openModal = () => {
 
 const closeModal = () => {
 	modal.style.display = 'none';
+	modalGameOver.style.display = 'none';
 	ui_button.play();
 	init();
 };
 
+const showGameOver = () => {
+	sfx_game_over.play();
+	modalGameOver.style.display = 'block';
+};
+
 openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
+
+modalGameOver.addEventListener('click', closeModal);
 
 gameBoard.addEventListener('click', handlePlayerTurn);
 
@@ -218,9 +234,7 @@ function handlePlayerTurn(event) {
 				simonSequence.slice(0, userSequence.length).toString()
 			) {
 				gameOver = true;
-				if (confirm('Game over, would you like to play again?')) {
-					setTimeout(() => init(), 1000);
-				}
+				showGameOver();
 			}
 			if (userSequence.toString() === simonSequence.toString()) {
 				userSequence = [];

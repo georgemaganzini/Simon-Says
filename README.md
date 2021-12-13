@@ -44,4 +44,4 @@ Fork the repo and clone it down to your machine, then host on a live server!
 
 - My only unsolved problem is why the audio files are experiencing some odd distortion, the files sound perfect when played directly from the file on my machine, but something odd is
   happening when they try to play through the browser.
-- I am also still working on a nice "Game Over" modal to replace the alert, hopefully I can get something together before I present.
+
