@@ -6,7 +6,7 @@
 
 A browser-based game of Simon Says. 
 
-## Technologies
+### Technologies
 
 HTML, CSS, and JavaScript.
 
