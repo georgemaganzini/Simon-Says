@@ -8,7 +8,9 @@ A browser-based game of Simon Says.
 
 ### Technologies
 
-HTML, CSS, and JavaScript.
+- HTML
+- CSS
+- JavaScript
 
 ### Installation instructions
 
