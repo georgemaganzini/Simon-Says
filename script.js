@@ -93,15 +93,14 @@ GAME.Sound = (function () {
 	};
 
 	self.init = function () {
+		bloop = new Switcher('assets/bloop.mp3', 10);
 		sfx_switcher_green = new Switcher('assets/green.mp3', 10);
 		sfx_switcher_red = new Switcher('assets/red.mp3', 10);
 		sfx_switcher_yellow = new Switcher('assets/yellow.mp3', 10);
 		sfx_switcher_blue = new Switcher('assets/blue.mp3', 10);
 		ui_button = new Switcher('assets/ui-button.wav', 5);
-		bloop = new Switcher('assets/bloop.mp3', 5);
 		sfx_game_over = new Switcher('assets/game-over.wav', 5);
 	};
-
 	return self;
 })();
 
@@ -110,21 +109,25 @@ const openModal = () => {
 	ui_button.play();
 };
 
-const closeModal = () => {
-	modal.style.display = 'none';
-	modalGameOver.style.display = 'none';
-	ui_button.play();
-	init();
-};
-
 const showGameOver = () => {
 	sfx_game_over.play();
 	modalGameOver.style.display = 'block';
 };
 
+const closeModal = () => {
+	modal.style.display = 'none';
+	ui_button.play();
+	init();
+};
+
+const hideGameOver = () => {
+	modalGameOver.style.display = 'none';
+	ui_button.play();
+};
+
 openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
-closeGameOver.addEventListener('click', closeModal);
+closeGameOver.addEventListener('click', hideGameOver);
 
 modalGameOver.addEventListener('click', closeModal);
 
