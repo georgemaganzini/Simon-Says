@@ -74,7 +74,13 @@ GAME.Sound = (function () {
 
 	self.playUi = function () {
 		if (GAME.isReady()) {
-			ui.play();
+			ui_button.play();
+		}
+	};
+
+	self.playUi = function () {
+		if (GAME.isReady()) {
+			bloop.play();
 		}
 	};
 
@@ -84,6 +90,7 @@ GAME.Sound = (function () {
 		sfx_switcher_yellow = new Switcher('assets/yellow.mp3', 10);
 		sfx_switcher_blue = new Switcher('assets/blue.mp3', 10);
 		ui_button = new Switcher('assets/ui-button.wav', 5);
+		bloop = new Switcher('assets/bloop.mp3', 5);
 	};
 
 	return self;
@@ -170,6 +177,7 @@ function simonTurn() {
 }
 
 function turnOnAll() {
+	bloop.play();
 	yellowBtn.classList.add('highlight');
 	blueBtn.classList.add('highlight');
 	redBtn.classList.add('highlight');
