@@ -19,6 +19,7 @@ const openBtn = document.getElementById('openModal');
 const modal = document.getElementById('modal');
 const closeBtn = document.getElementById('close');
 const modalGameOver = document.getElementById('game-over-modal-container');
+const closeGameOver = document.getElementById('close-2');
 
 // Initialization for multiple audio files at once, followed this guide:
 // https://blog.cotten.io/playing-audio-resources-simultaneously-in-javascript-546ec4d6216a
@@ -123,6 +124,7 @@ const showGameOver = () => {
 
 openBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
+closeGameOver.addEventListener('click', closeModal);
 
 modalGameOver.addEventListener('click', closeModal);
 

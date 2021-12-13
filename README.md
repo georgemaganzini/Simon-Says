@@ -43,5 +43,4 @@ Fork the repo and clone it down to your machine, then host on a live server!
 ### Unsolved Problems
 
 - My only unsolved problem is why the audio files are experiencing some odd distortion, the files sound perfect when played directly from the file on my machine, but something odd is
-  happening when they try to play through the browser.
-
+  happening when they try to play through the browser, fix might be as simple as choosing different audio files.
