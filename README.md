@@ -2,9 +2,13 @@
 
 ![Simon Says Screenshot](/assets/simon_ss.png)
 
-## Description & Technologies
+## Description  
 
-A browser-based "Simon Says" game coded in JavaScript, HTML, and CSS.
+A browser-based game of Simon Says. 
+
+## Technologies
+
+HTML, CSS, and JavaScript.
 
 ### Installation instructions
 
