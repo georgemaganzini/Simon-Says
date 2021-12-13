@@ -1,12 +1,14 @@
 # Simon-Says
 
-## Description
+![Simon Says Screenshot](/assets/simon_ss.png)
+
+## Description & Technologies
 
 A browser-based "Simon Says" game coded in JavaScript, HTML, and CSS.
 
-### Wire Frames
+### Installation instructions
 
-![Simon Says Wireframe](/assets/wire-frame.png)
+Fork the repo and clone it down to your machine, then host on a live server!
 
 ### User Stories
 
@@ -25,5 +27,21 @@ A browser-based "Simon Says" game coded in JavaScript, HTML, and CSS.
 
 - As a user, I want different visual themes.
 - As a user, I want different game modes.
+
   - Mirrored/Reverse recall
   - Only repeat what Simon actually "says"
+
+### Wire Frames
+
+![Simon Says Wireframe](/assets/wire-frame.png)
+
+### Major Hurdles
+
+- Figuring out how to have multiple audio sources playing at once was my biggest hurdle, it turns out there are lots of ways to solve the problem but to do it with just JavaScript involves preloading multiple virtual channels for each audio sample that you can pull from as needed.
+- While I was able to figure it out, it took quite a while so I unfortunately did not get to implement a few different visual themes as I may have liked.
+
+### Unsolved Problems
+
+- My only unsolved problem is why the audio files are experiencing some odd distortion, the files sound perfect when played directly from the file on my machine, but something odd is
+  happening when they try to play through the browser.
+- I am also still working on a nice "Game Over" modal to replace the alert, hopefully I can get something together before I present.
