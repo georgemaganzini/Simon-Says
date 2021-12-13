@@ -19,27 +19,8 @@ const openBtn = document.getElementById('openModal');
 const modal = document.getElementById('modal');
 const closeBtn = document.getElementById('close');
 
-const openModal = () => {
-	modal.style.display = 'block';
-};
-
-const closeModal = () => {
-	modal.style.display = 'none';
-};
-
-openBtn.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
-
-gameBoard.addEventListener('click', handlePlayerTurn);
-
-resetBtn.addEventListener('click', function () {
-	clearTimeout(lightSwitch);
-	init();
-});
-
 // Initialization for multiple audio files at once, followed this guide:
 // https://blog.cotten.io/playing-audio-resources-simultaneously-in-javascript-546ec4d6216a
-
 function Channel(audio_uri) {
 	this.audio_uri = audio_uri;
 	this.resource = new Audio(audio_uri);
@@ -91,15 +72,43 @@ GAME.Sound = (function () {
 		}
 	};
 
+	self.playUi = function () {
+		if (GAME.isReady()) {
+			ui.play();
+		}
+	};
+
 	self.init = function () {
 		sfx_switcher_green = new Switcher('assets/green.mp3', 10);
 		sfx_switcher_red = new Switcher('assets/red.mp3', 10);
 		sfx_switcher_yellow = new Switcher('assets/yellow.mp3', 10);
 		sfx_switcher_blue = new Switcher('assets/blue.mp3', 10);
+		ui_button = new Switcher('assets/ui-button.wav', 5);
 	};
 
 	return self;
 })();
+
+const openModal = () => {
+	modal.style.display = 'block';
+	ui_button.play();
+};
+
+const closeModal = () => {
+	modal.style.display = 'none';
+	ui_button.play();
+	init();
+};
+
+openBtn.addEventListener('click', openModal);
+closeBtn.addEventListener('click', closeModal);
+
+gameBoard.addEventListener('click', handlePlayerTurn);
+
+resetBtn.addEventListener('click', function () {
+	clearTimeout(lightSwitch);
+	init();
+});
 
 function init() {
 	playerTurn = false;
@@ -220,6 +229,3 @@ function handlePlayerTurn(event) {
 		}
 	}
 }
-
-// TODO: change gameOver to modal
-// 		 instructions modal
