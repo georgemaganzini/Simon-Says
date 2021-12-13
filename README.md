@@ -48,6 +48,6 @@ Fork the repo and clone it down to your machine, then host on a live server!
 
 ### Unsolved Problems
 
-- Audio files are experiencing some odd distortion, the files sound perfect when played directly from the file on my machine, but something odd is
-  happening when they try to play through the browser, fix might be as simple as choosing different audio files.
+- Audio files are experiencing some distortion, the files sound perfect when played directly from the file on my machine, but something odd is
+  happening when they try to play through the browser. Experimented with setTimeout to add a slight delay as well as different audio files altogether to no avail.
 - Some unwanted behavior if the player clicks the reset button too quickly or during a long Simon turn since my Simon function relies on queued and staggered setTimeouts. Was exploring the clearTimeout function but could not quite get the functionality I wanted.
