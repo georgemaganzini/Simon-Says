@@ -7,11 +7,6 @@ let prevHigh = 0;
 let lightSwitch;
 let GAME = {};
 
-// const green = new Audio('assets/green.mp3');
-// const red = new Audio('assets/red.mp3');
-// const yellow = new Audio('assets/yellow.mp3');
-// const blue = new Audio('assets/blue.mp3');
-
 const gameBoard = document.querySelector('#gameBoard');
 const resetBtn = document.querySelector('#resetBtn');
 const yellowBtn = document.querySelector('.yellowBtn');
@@ -28,7 +23,7 @@ resetBtn.addEventListener('click', function () {
 	init();
 });
 
-// Playing multiple audio files at once, followed this guide:
+// Initialization for multiple audio files at once, followed this guide:
 // https://blog.cotten.io/playing-audio-resources-simultaneously-in-javascript-546ec4d6216a
 
 function Channel(audio_uri) {
@@ -97,16 +92,17 @@ function init() {
 	gameOver = false;
 	simonSequence = [];
 	userSequence = [];
+	GAME.Sound.init();
 	if (roundNum > prevHigh) {
 		prevHigh = roundNum;
 		if (prevHigh < 10) {
-			highCounter.innerText = `High Score:${'000' + prevHigh}`;
-		} else highCounter.innerText = `High Score:${'00' + prevHigh}`;
+			highCounter.innerText = `High Score:${'00' + prevHigh}`;
+		} else highCounter.innerText = `High Score:${'0' + prevHigh}`;
 	} else if (prevHigh < 10) {
-		highCounter.innerText = `High Score:${'000' + prevHigh}`;
-	} else highCounter.innerText = `High Score:${'00' + prevHigh}`;
+		highCounter.innerText = `High Score:${'00' + prevHigh}`;
+	} else highCounter.innerText = `High Score:${'0' + prevHigh}`;
 	roundNum = 1;
-	roundCounter.innerText = `Round:${'000' + roundNum}`;
+	roundCounter.innerText = `Round:${'00' + roundNum}`;
 	turnOnAll();
 	setTimeout(() => turnOffAll(), 500);
 	setTimeout(() => turnOnAll(), 1000);
@@ -116,7 +112,6 @@ function init() {
 	setTimeout(() => increaseByOneAndGo(), 3000);
 }
 
-GAME.Sound.init();
 init();
 
 function increaseByOneAndGo() {
@@ -129,6 +124,18 @@ function simonTurn() {
 		lightSwitch = setTimeout(function () {
 			let tempBtn = document.querySelector(`#b${el}`);
 			tempBtn.classList.toggle('highlight');
+					switch (tempBtn.id) {
+						case 'b0':
+							sfx_switcher_green.play();
+						case 'b1':
+							sfx_switcher_red.play();
+						case 'b2':
+							sfx_switcher_yellow.play();
+						case 'b3':
+							sfx_switcher_blue.play();
+						default:
+							break;
+					}
 			setTimeout(function () {
 				tempBtn.classList.toggle('highlight');
 				if (index === simonSequence.length - 1) {
@@ -189,9 +196,9 @@ function handlePlayerTurn(event) {
 				playerTurn = false;
 				roundNum += 1;
 				if (roundNum < 10) {
-					roundCounter.innerText = `Round:${'000' + roundNum}`;
-				} else {
 					roundCounter.innerText = `Round:${'00' + roundNum}`;
+				} else {
+					roundCounter.innerText = `Round:${'0' + roundNum}`;
 				}
 
 				setTimeout(() => increaseByOneAndGo(), 2000);
