@@ -15,6 +15,20 @@ const redBtn = document.querySelector('.redBtn');
 const greenBtn = document.querySelector('.greenBtn');
 const roundCounter = document.querySelector('#round-score');
 const highCounter = document.querySelector('#high-score');
+const openBtn = document.getElementById('openModal');
+const modal = document.getElementById('modal');
+const closeBtn = document.getElementById('close');
+
+const openModal = () => {
+	modal.style.display = 'block';
+};
+
+const closeModal = () => {
+	modal.style.display = 'none';
+};
+
+openBtn.addEventListener('click', openModal);
+closeBtn.addEventListener('click', closeModal);
 
 gameBoard.addEventListener('click', handlePlayerTurn);
 
@@ -124,18 +138,18 @@ function simonTurn() {
 		lightSwitch = setTimeout(function () {
 			let tempBtn = document.querySelector(`#b${el}`);
 			tempBtn.classList.toggle('highlight');
-					switch (tempBtn.id) {
-						case 'b0':
-							sfx_switcher_green.play();
-						case 'b1':
-							sfx_switcher_red.play();
-						case 'b2':
-							sfx_switcher_yellow.play();
-						case 'b3':
-							sfx_switcher_blue.play();
-						default:
-							break;
-					}
+			switch (tempBtn.id) {
+				case 'b0':
+					sfx_switcher_green.play();
+				case 'b1':
+					sfx_switcher_red.play();
+				case 'b2':
+					sfx_switcher_yellow.play();
+				case 'b3':
+					sfx_switcher_blue.play();
+				default:
+					break;
+			}
 			setTimeout(function () {
 				tempBtn.classList.toggle('highlight');
 				if (index === simonSequence.length - 1) {
