@@ -193,6 +193,7 @@ h2 {
 .play-again {
 	position: relative;
 	top: 32px;
+	z-index: 2;
 }
 .game-over-text {
 	font-family: Digital, Helvetica, sans-serif;
@@ -258,7 +259,22 @@ h2 {
 	}
 	#modal-textbox,
 	#game-over-modal {
-		width: 95vh;
+		width: 48vh;
+		margin: 120px 0;
+		overflow: none;
+	}
+	.game-over-text{
+		font-size: 46px;
+	}
+	.modal-buttons{
+	padding: 14px 28px;
+	margin-right: 20px;
+	}
+
+	.close-btn {
+		position: relative;
+		top: -70px;
+		z-index: 2;
 	}
 
 }
