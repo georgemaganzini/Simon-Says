@@ -80,6 +80,7 @@ h2 {
 	border: 3px solid rgba(0, 0, 0, 0.3);
 }
 
+
 .boardBtns {
 	margin: 15px;
 	height: 400px;
@@ -126,6 +127,7 @@ h2 {
 	top: -200px;
 	left: -200px;
 }
+
 
 .highlight {
 	opacity: 1;
@@ -207,4 +209,56 @@ h2 {
 
 .modal-ul {
 	line-height: 2em;
+}
+
+@media only screen and (max-width: 500px) {
+	h1 {
+		font-size: 36px;
+		top: 218px;
+		left: 115px;
+	}
+	h2{
+		font-size: 28px;
+		padding-left: 0;
+	}
+	.scores{
+		width: 340px;
+	}
+	#gameBoard {
+		height: 340px;
+		width: 340px;
+	}
+	.boardBtns{
+		height: 285px;
+		width: 285px;
+		margin: 0px;
+	}
+	.yellowBtn {
+		top: 195px;
+		left: -138px;
+	}
+	.blueBtn {
+		top: 195px;
+		left: 195px;
+	}
+	.redBtn {
+		top: -135px;
+		left: 195px;
+	}
+	.greenBtn {
+		top: -135px;
+		left: -138px;
+	}
+	#resetBtn{
+		top: -140px;
+		left: 158px;
+	}
+	.instructions-btn{
+		left: 80px;
+	}
+	#modal-textbox,
+	#game-over-modal {
+		width: 95vh;
+	}
+
 }
