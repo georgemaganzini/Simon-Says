@@ -147,11 +147,11 @@ function init() {
 	if (roundNum > prevHigh) {
 		prevHigh = roundNum;
 		if (prevHigh < 10) {
-			highCounter.innerText = `High Score:${'00' + prevHigh}`;
-		} else highCounter.innerText = `High Score:${'0' + prevHigh}`;
+			highCounter.innerText = `High Score: 00${prevHigh}`;
+		} else highCounter.innerText = `High Score: 0${prevHigh}`;
 	} else if (prevHigh < 10) {
-		highCounter.innerText = `High Score:${'00' + prevHigh}`;
-	} else highCounter.innerText = `High Score:${'0' + prevHigh}`;
+		highCounter.innerText = `High Score: 00${prevHigh}`;
+	} else highCounter.innerText = `High Score: 0${prevHigh}`;
 	roundNum = 1;
 	roundCounter.innerText = `Round:${'00' + roundNum}`;
 	turnOnAll();
